@@ -157,9 +157,44 @@ body{
 
 .exp-card{
   padding:20px;
-  background:rgba(255,255,255,0.05);
-  border-radius:10px;
+  border-radius:12px;
   width:220px;
+
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(10px);
+
+  border: 1px solid transparent;
+  background-clip: padding-box;
+
+  position: relative;
+  overflow: hidden;
+}
+
+/* neon border effect */
+.exp-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:12px;
+  padding:1px;
+  background: var(--neon-gradient);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+}
+
+.exp-card h3,
+.exp-card p{
+  background: var(--neon-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.exp-card:hover{
+  transform: translateY(-5px);
+  transition: 0.3s;
 }
 
 /* RESERVE */
